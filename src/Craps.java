@@ -5,7 +5,7 @@ import java.util.Scanner;
  *
  */
 
-public class Craps 
+public class Craps
 {
 
 	public static void main(String[] args) 
@@ -13,9 +13,12 @@ public class Craps
 		Scanner in = new Scanner(System.in);
 		Dice die1 = new Dice();
 		Dice die2 = new Dice();
-		
-		System.out.println("Welcome to Craps! Press enter to roll the dice."); 
-		in.nextLine(); 
+			
+		boolean game = true;
+		while (game)
+		{
+			System.out.println("Welcome to Craps! Press enter to roll the dice."); 
+			in.nextLine(); 
 		
 		boolean play = true;
 		while (play)
@@ -70,26 +73,27 @@ public class Craps
 			}
 		}
 		
-		System.out.println("Would you like to play again? Press 1 for yes and 2 for no."); 
-							int yesNo = in.nextInt(); in.nextLine();
-		
-		boolean playAgain = true;
-		while (playAgain)
-		{
-			if (yesNo == 1)
+			System.out.println("Would you like to play again? (enter yes or no)"); 
+								String yesNo = in.nextLine();
+			
+			boolean loop = true;
+			while (loop)
 			{
-				
-			}
-			else if (yesNo == 2)
-			{
-				playAgain=false;
-				System.out.println("Thanks for playing!");
-			}
-			else
-			{
-				System.out.println("Sorry, that is an invalid input. Try again: "); yesNo = in.nextInt(); in.nextLine();
+				if (yesNo.equals("yes"))
+				{
+					loop=false;
+				}
+				else if (yesNo.equals("no"))
+				{
+					loop=false;
+					game=false;
+					System.out.println("Thanks for playing!");
+				}
+				else
+				{
+					System.out.println("Sorry, that is an invalid input. Try again: "); yesNo = in.nextLine();
+				}
 			}
 		}
-							
 	}
 }
